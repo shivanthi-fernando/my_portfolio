@@ -1,113 +1,141 @@
+"use client";
+
 import Image from 'next/image'
+import Head from 'next/head'
+
+//Import framer motion
+import { motion } from "framer-motion"
+
+//Import pics
+import proImg from "../../public/assets/pro_pic_2.jpg"
+import service1 from "../../public/assets/Service1.png"
+import service2 from "../../public/assets/Service2.png"
+import service3 from "../../public/assets/Service3.png"
+
+//Import icons
+import { BsFillMoonStarsFill, BsGithub, BsLinkedin, BsFacebook} from 'react-icons/bs'
+
+// Use a react hook to get the dark mode
+import {useState} from "react";
 
 export default function Home() {
+
+  // Dark mode function
+  const [darkmode, setdarkmode] = useState(false);
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
+  <div className={darkmode? "dark:" : ""}>
+    <Head>
+      <title>Portfolio - Shivanthi Fernando</title>
+      <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;800&display=swap');
+      </style>
+    </Head>
+    <main className="bg-yellow-50 min-h-screen dark:bg-black">
+      {/* Nav and hero */}
+      <section>
+        <nav className="py-5 flex justify-between bg-red-800 bg-opacity-10">
+          <h1 className="font-pacifico px-10 sm:text-lg md:text-lg lg:text-2xl">Welcome to my portfolio</h1>
+          <ul className="flex items-center px-10">
+            {/* Icons */}
+            <li>
+              <BsFillMoonStarsFill 
+                onClick={()=> setdarkmode(!darkmode)}
+                className="cursor-pointer text-xl mx-5"/>
+            </li>
+            <li>
+              <a 
+                href="https://drive.google.com/file/d/1RoNIjJrYAb5kQ7-4VlrSMrl6hzD1l_-W/view?usp=sharing" 
+                download={"resume"}
+                className=" bg-red-500 text-white px-4 py-2 border-none rounded-md">
+                Resume
+              </a>
+            </li>
+          </ul>
+        </nav>
+        {/* About Me */}
+        <div className="py-5">
+          <h1 className="text-center font-pacifico italic text-6xl text-red-800 font-bold py-2">
+            Shivanthi Fernando
+          </h1>
+          <h3 className="text-center font-pacifico text-3xl text-red-500">
+            Web Developer
+          </h3>
+          <p className="text-center lg:px-48 px-14 py-2 text-red-950">
+          Highly organized, responsible, dedicated individual, who is passionate about cloud
+technologies and possesses relevant skills, knowledge and experience gained through
+my academics and work. Capable of working well both in a team atmosphere and
+independently. Interested in learning new technologies and share my knowledge with
+other team members.
+          </p>
+        </div>
+        {/* contact */}
+        <div className="flex justify-center py-2 text-3xl text-gray-600">
+          <a href="https://github.com/shivanthi-fernando" className="px-5 hover:text-red-950">
+            <BsGithub/>
+          </a>
+          <a href="https://www.linkedin.com/in/shivanthi-fernando-0146a21a8" className="px-5 hover:text-red-950">
+            <BsLinkedin/>
+          </a>
+          <a href="https://www.facebook.com/shivani.fernandz" className="px-5 pb-5 hover:text-red-950">
+            <BsFacebook/>
           </a>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+        {/* Me */}
+        <motion.div 
+          initial={{opacity:0, scale:0.5}}
+          animate={{opacity:1, scale:1}}
+          transition={{duration: 0.5}}>
+          <div className="py-5 relative mx-auto max-w-xs max-h-max bg-gradient-to-b from-red-900 p-5 w-80 h-80 rounded-full">
+            <Image src={proImg} alt="profile image" className="rounded-full" objectFit="cover"/>
+          </div>
+        </motion.div>
+      </section>
+      {/* My Services */}
+      <section>
+          <div>
+            <h1 className="font-pacifico text-4xl text-red-800 font-bold pt-6 px-10">
+              Services I Offer
+            </h1>
+          </div>
+          {/* Services Cards */}
+          <div className="px-5 pt-3 flex justify-center">
+            <motion.div
+            whileHover={{scale:1.1}}
+            whileTap={{scale:0.9}}>
+              <div className="text-center bg-red-800 bg-opacity-10 rounded-lg py-4 mb-4 mx-2">
+                <Image src={service1} alt="service_1" width={100} height={100} className="inline"></Image>
+                <h1 className="font-poppins text-lg py-2 font-bold">Static Web Development</h1>
+                <p className="text-xs lg:px-16 md:px-10 sm:px-7">I develop websits using ReactJS, Express, Tailwindcss, Bootstrap</p>
+              </div>
+            </motion.div>
+            <motion.div
+            whileHover={{scale:1.1}}
+            whileTap={{scale:0.9}}>
+              <div className="text-center bg-red-800 bg-opacity-10 rounded-md py-4 mb-4 mx-2">
+                <Image src={service2} alt="service_2" width={100} height={100} className="inline"></Image>
+                <h1 className="font-poppins text-lg py-2 font-bold px-3">Fullstack Development</h1>
+                <p className="text-xs lg:px-16 md:px-10 sm:px-7">I develop websits using NodeJS, React, NextJS, Express and MongoDB</p>
+              </div>
+            </motion.div>
+            <motion.div
+            whileHover={{scale:1.1}}
+            whileTap={{scale:0.9}}>
+              <div className="text-center bg-red-800 bg-opacity-10 rounded-md py-4 mb-4 mx-2">
+                <Image src={service3} alt="service_3" width={100} height={100} className="inline"></Image>
+                <h1 className="font-poppins text-lg py-2 font-bold">Figma Prototype Designing</h1>
+                <p className="text-xs lg:px-16 md:px-10 sm:px-7">I design prototyies for websits and mobile applications using figma</p>
+              </div>
+            </motion.div>
+            </div>
+      </section>
+      {/* Footer */}
+      <section>
+        <div className="text-center bg-red-800 bg-opacity-10 py-5">
+          <p className="text-xs text-red-950">All rights reserved shivanthi@2023</p>
+        </div>
+      </section>
     </main>
+  </div>
   )
 }
